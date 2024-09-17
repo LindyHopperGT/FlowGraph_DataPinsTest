@@ -20,16 +20,16 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Bool Output")
 	FFlowDataPinOutputProperty_Bool BoolOutputProperty = false;
 
-	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Int32 Output")
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Int Output")
 	FFlowDataPinOutputProperty_Int32 Int32OutputProperty = 0;
 
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Int64 Output")
 	FFlowDataPinOutputProperty_Int64 Int64OutputProperty = 0;
 
-	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Float32 Output")
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Float Output")
 	FFlowDataPinOutputProperty_Float Float32OutputProperty = 0.0f;
 
-	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Float64 Output")
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Double Output")
 	FFlowDataPinOutputProperty_Double Float64OutputProperty = 0.0;
 
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Name Output")

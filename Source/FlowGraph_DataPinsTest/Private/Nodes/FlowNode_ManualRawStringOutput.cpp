@@ -4,15 +4,14 @@
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(FlowNode_ManualRawStringOutput)
 
-FName UFlowNode_ManualRawStringOutput::OUTPIN_StringOutput;
+FName UFlowNode_ManualRawStringOutput::OUTPIN_StringOutput = FName("String Output");
 
 UFlowNode_ManualRawStringOutput::UFlowNode_ManualRawStringOutput(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-	if (OUTPIN_StringOutput.IsNone())
-	{
-		OUTPIN_StringOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_ManualRawStringOutput, StringOutput);
-	}
+#if WITH_EDITOR
+	Category = "Test";
+#endif
 
 	OutputPins.Add(FFlowPin(OUTPIN_StringOutput, EFlowPinType::String));
 }

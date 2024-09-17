@@ -4,51 +4,34 @@
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(FlowNode_AllAutoRawDataOutputs)
 
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_BoolOutput;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Int8Output;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Int16Output;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Int32Output;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Int64Output;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Uint8Output;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Uint16Output;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Uint32Output;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Uint64Output;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Float32Output;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Float64Output;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_NameOutput;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_StringOutput;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_TextOutput;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_EnumOutput;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_VectorOutput;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_TransformOutput;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_GameplayTagOutput;
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_GameplayTagContainerOutput;
+// NOTE (gtaylor) Need to come up with a version of GetDisplayNameFromProperty that works at runtime, or otherwise
+// make these names not need to be explicitly cached
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_BoolOutput = FName("Bool Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Int8Output = FName("Int8 Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Int16Output = FName("Int16 Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Int32Output = FName("Int32 Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Int64Output = FName("Int64 Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Uint8Output = FName("Uint8 Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Uint16Output = FName("Uint16 Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Uint32Output = FName("Uint32 Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Uint64Output = FName("Uint64 Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Float32Output = FName("Float Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Float64Output = FName("Double Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_NameOutput = FName("Name Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_StringOutput = FName("String Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_TextOutput = FName("Text Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_EnumOutput = FName("Enum Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_VectorOutput = FName("Vector Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_TransformOutput = FName("Transform Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_GameplayTagOutput = FName("GameplayTag Output");
+FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_GameplayTagContainerOutput = FName("GameplayTagContainer Output");
 
 UFlowNode_AllAutoRawDataOutputs::UFlowNode_AllAutoRawDataOutputs(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-	if (OUTPIN_BoolOutput.IsNone())
-	{
-		OUTPIN_BoolOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, BoolOutput);
-		OUTPIN_Int8Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Int8Output);
-		OUTPIN_Int16Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Int16Output);
-		OUTPIN_Int32Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Int32Output);
-		OUTPIN_Int64Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Int64Output);
-		OUTPIN_Uint8Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Uint8Output);
-		OUTPIN_Uint16Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Uint16Output);
-		OUTPIN_Uint32Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Uint32Output);
-		OUTPIN_Uint64Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Uint64Output);
-		OUTPIN_Float32Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Float32Output);
-		OUTPIN_Float64Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Float64Output);
-		OUTPIN_NameOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, NameOutput);
-		OUTPIN_StringOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, StringOutput);
-		OUTPIN_TextOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, TextOutput);
-		OUTPIN_EnumOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, EnumOutput);
-		OUTPIN_VectorOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, VectorOutput);
-		OUTPIN_TransformOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, TransformOutput);
-		OUTPIN_GameplayTagOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, GameplayTagOutput);
-		OUTPIN_GameplayTagContainerOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, GameplayTagContainerOutput);
-	}
+#if WITH_EDITOR
+	Category = "Test";
+#endif
 }
 
 void UFlowNode_AllAutoRawDataOutputs::ExecuteInput(const FName& PinName)

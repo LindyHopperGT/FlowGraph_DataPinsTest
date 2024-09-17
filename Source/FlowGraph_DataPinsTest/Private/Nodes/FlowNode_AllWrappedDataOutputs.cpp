@@ -7,6 +7,9 @@
 UFlowNode_AllWrappedDataOutputs::UFlowNode_AllWrappedDataOutputs(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
+#if WITH_EDITOR
+	Category = "Test";
+#endif
 }
 
 void UFlowNode_AllWrappedDataOutputs::ExecuteInput(const FName& PinName)
@@ -39,7 +42,7 @@ FFlowDataPinResult_Float UFlowNode_AllWrappedDataOutputs::TrySupplyDataPinAsFloa
 {
 	FFlowDataPinResult_Float Result = Super::TrySupplyDataPinAsFloat_Implementation(PinName);
 
-	LogNote(FString::Printf(TEXT("%s supplied %.0f for pin %s"), *GetName(), Result.Value, *PinName.ToString()));
+	LogNote(FString::Printf(TEXT("%s supplied %.0g for pin %s"), *GetName(), Result.Value, *PinName.ToString()));
 
 	return Result;
 }

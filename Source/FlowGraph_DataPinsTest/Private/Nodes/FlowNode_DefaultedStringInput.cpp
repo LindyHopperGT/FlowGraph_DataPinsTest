@@ -4,16 +4,14 @@
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(FlowNode_DefaultedStringInput)
 
-FName UFlowNode_DefaultedStringInput::INPIN_StringInput;
+FName UFlowNode_DefaultedStringInput::INPIN_StringInput = FName("String Input");
 
 UFlowNode_DefaultedStringInput::UFlowNode_DefaultedStringInput(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-	if (INPIN_StringInput.IsNone())
-	{
-		// Cache the PinName from the Property's Display Name
-		INPIN_StringInput = GET_MEMBER_NAME_CHECKED(UFlowNode_DefaultedStringInput, StringInput);
-	}
+#if WITH_EDITOR
+	Category = "Test";
+#endif
 }
 
 void UFlowNode_DefaultedStringInput::ExecuteInput(const FName& PinName)

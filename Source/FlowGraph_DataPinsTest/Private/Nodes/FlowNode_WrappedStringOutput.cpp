@@ -7,6 +7,9 @@
 UFlowNode_WrappedStringOutput::UFlowNode_WrappedStringOutput(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
+#if WITH_EDITOR
+	Category = "Test";
+#endif
 }
 
 void UFlowNode_WrappedStringOutput::ExecuteInput(const FName& PinName)

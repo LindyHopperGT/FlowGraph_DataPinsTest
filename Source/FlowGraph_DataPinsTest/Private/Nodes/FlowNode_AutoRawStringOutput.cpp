@@ -7,6 +7,9 @@
 UFlowNode_AutoRawStringOutput::UFlowNode_AutoRawStringOutput(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
+#if WITH_EDITOR
+	Category = "Test";
+#endif
 }
 
 void UFlowNode_AutoRawStringOutput::ExecuteInput(const FName& PinName)
