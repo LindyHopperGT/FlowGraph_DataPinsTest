@@ -4,28 +4,6 @@
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(FlowNode_AllAutoRawDataOutputs)
 
-// NOTE (gtaylor) Need to come up with a version of GetDisplayNameFromProperty that works at runtime, or otherwise
-// make these names not need to be explicitly cached
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_BoolOutput = FName("Bool Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Int8Output = FName("Int8 Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Int16Output = FName("Int16 Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Int32Output = FName("Int32 Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Int64Output = FName("Int64 Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Uint8Output = FName("Uint8 Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Uint16Output = FName("Uint16 Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Uint32Output = FName("Uint32 Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Uint64Output = FName("Uint64 Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Float32Output = FName("Float Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_Float64Output = FName("Double Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_NameOutput = FName("Name Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_StringOutput = FName("String Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_TextOutput = FName("Text Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_EnumOutput = FName("Enum Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_VectorOutput = FName("Vector Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_TransformOutput = FName("Transform Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_GameplayTagOutput = FName("GameplayTag Output");
-FName UFlowNode_AllAutoRawDataOutputs::OUTPIN_GameplayTagContainerOutput = FName("GameplayTagContainer Output");
-
 UFlowNode_AllAutoRawDataOutputs::UFlowNode_AllAutoRawDataOutputs(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
@@ -36,14 +14,14 @@ UFlowNode_AllAutoRawDataOutputs::UFlowNode_AllAutoRawDataOutputs(const FObjectIn
 
 void UFlowNode_AllAutoRawDataOutputs::ExecuteInput(const FName& PinName)
 {
-	Super::ExecuteInput(PinName);
-
 	constexpr bool bFinish = true;
 	TriggerFirstOutput(bFinish);
 }
 
 FFlowDataPinResult_Bool UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsBool_Implementation(const FName& PinName) const
 {
+	static const FName OUTPIN_BoolOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, BoolOutput);
+
 	FFlowDataPinResult_Bool Result;
 	if (PinName == OUTPIN_BoolOutput)
 	{
@@ -61,6 +39,15 @@ FFlowDataPinResult_Bool UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsBool_
 
 FFlowDataPinResult_Int UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsInt_Implementation(const FName& PinName) const
 {
+	static const FName OUTPIN_Int8Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Int8Output);
+	static const FName OUTPIN_Int16Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Int16Output);
+	static const FName OUTPIN_Int32Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Int32Output);
+	static const FName OUTPIN_Int64Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Int64Output);
+	static const FName OUTPIN_Uint8Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Uint8Output);
+	static const FName OUTPIN_Uint16Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Uint16Output);
+	static const FName OUTPIN_Uint32Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Uint32Output);
+	static const FName OUTPIN_Uint64Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Uint64Output);
+
 	FFlowDataPinResult_Int Result;
 
 	if (PinName == OUTPIN_Int8Output)
@@ -107,6 +94,9 @@ FFlowDataPinResult_Int UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsInt_Im
 
 FFlowDataPinResult_Float UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsFloat_Implementation(const FName& PinName) const
 {
+	static const FName OUTPIN_Float32Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Float32Output);
+	static const FName OUTPIN_Float64Output = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, Float64Output);
+
 	FFlowDataPinResult_Float Result;
 
 	if (PinName == OUTPIN_Float32Output)
@@ -129,6 +119,8 @@ FFlowDataPinResult_Float UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsFloa
 
 FFlowDataPinResult_Name UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsName_Implementation(const FName& PinName) const
 {
+	static const FName OUTPIN_NameOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, NameOutput);
+
 	FFlowDataPinResult_Name Result;
 	if (PinName == OUTPIN_NameOutput)
 	{
@@ -146,6 +138,8 @@ FFlowDataPinResult_Name UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsName_
 
 FFlowDataPinResult_String UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsString_Implementation(const FName& PinName) const
 {
+	static const FName OUTPIN_StringOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, StringOutput);
+
 	FFlowDataPinResult_String Result;
 	if (PinName == OUTPIN_StringOutput)
 	{
@@ -163,6 +157,8 @@ FFlowDataPinResult_String UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsStr
 
 FFlowDataPinResult_Text UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsText_Implementation(const FName& PinName) const
 {
+	static const FName OUTPIN_TextOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, TextOutput);
+
 	FFlowDataPinResult_Text Result;
 	if (PinName == OUTPIN_TextOutput)
 	{
@@ -180,6 +176,8 @@ FFlowDataPinResult_Text UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsText_
 
 FFlowDataPinResult_Enum UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsEnum_Implementation(const FName& PinName) const
 {
+	static const FName OUTPIN_EnumOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, EnumOutput);
+
 	FFlowDataPinResult_Enum Result;
 	if (PinName == OUTPIN_EnumOutput)
 	{
@@ -202,6 +200,8 @@ FFlowDataPinResult_Enum UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsEnum_
 
 FFlowDataPinResult_Vector UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsVector_Implementation(const FName& PinName) const
 {
+	static const FName OUTPIN_VectorOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, VectorOutput);
+
 	FFlowDataPinResult_Vector Result;
 	if (PinName == OUTPIN_VectorOutput)
 	{
@@ -219,6 +219,8 @@ FFlowDataPinResult_Vector UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsVec
 
 FFlowDataPinResult_Transform UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsTransform_Implementation(const FName& PinName) const
 {
+	static const FName OUTPIN_TransformOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, TransformOutput);
+
 	FFlowDataPinResult_Transform Result;
 	if (PinName == OUTPIN_TransformOutput)
 	{
@@ -236,6 +238,8 @@ FFlowDataPinResult_Transform UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAs
 
 FFlowDataPinResult_GameplayTag UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsGameplayTag_Implementation(const FName& PinName) const
 {
+	static const FName OUTPIN_GameplayTagOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, GameplayTagOutput);
+
 	FFlowDataPinResult_GameplayTag Result;
 	if (PinName == OUTPIN_GameplayTagOutput)
 	{
@@ -253,6 +257,8 @@ FFlowDataPinResult_GameplayTag UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPin
 
 FFlowDataPinResult_GameplayTagContainer UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsGameplayTagContainer_Implementation(const FName& PinName) const
 {
+	static const FName OUTPIN_GameplayTagContainerOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, GameplayTagContainerOutput);
+
 	FFlowDataPinResult_GameplayTagContainer Result;
 	if (PinName == OUTPIN_GameplayTagContainerOutput)
 	{

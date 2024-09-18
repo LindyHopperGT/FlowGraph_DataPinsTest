@@ -14,8 +14,6 @@ UFlowNode_WrappedStringOutput::UFlowNode_WrappedStringOutput(const FObjectInitia
 
 void UFlowNode_WrappedStringOutput::ExecuteInput(const FName& PinName)
 {
-	Super::ExecuteInput(PinName);
-
 	constexpr bool bFinish = true;
 	TriggerFirstOutput(bFinish);
 }

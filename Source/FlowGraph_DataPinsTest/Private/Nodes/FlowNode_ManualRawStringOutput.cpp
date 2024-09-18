@@ -4,7 +4,7 @@
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(FlowNode_ManualRawStringOutput)
 
-FName UFlowNode_ManualRawStringOutput::OUTPIN_StringOutput = FName("String Output");
+FName UFlowNode_ManualRawStringOutput::OUTPIN_StringOutput;
 
 UFlowNode_ManualRawStringOutput::UFlowNode_ManualRawStringOutput(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
@@ -13,13 +13,12 @@ UFlowNode_ManualRawStringOutput::UFlowNode_ManualRawStringOutput(const FObjectIn
 	Category = "Test";
 #endif
 
+	OUTPIN_StringOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_ManualRawStringOutput, StringOutput);
 	OutputPins.Add(FFlowPin(OUTPIN_StringOutput, EFlowPinType::String));
 }
 
 void UFlowNode_ManualRawStringOutput::ExecuteInput(const FName& PinName)
 {
-	Super::ExecuteInput(PinName);
-
 	constexpr bool bFinish = true;
 	TriggerFirstOutput(bFinish);
 }

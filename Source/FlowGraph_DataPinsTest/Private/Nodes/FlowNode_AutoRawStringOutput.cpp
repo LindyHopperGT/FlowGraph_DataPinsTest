@@ -14,8 +14,6 @@ UFlowNode_AutoRawStringOutput::UFlowNode_AutoRawStringOutput(const FObjectInitia
 
 void UFlowNode_AutoRawStringOutput::ExecuteInput(const FName& PinName)
 {
-	Super::ExecuteInput(PinName);
-
 	constexpr bool bFinish = true;
 	TriggerFirstOutput(bFinish);
 }

@@ -4,8 +4,6 @@
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(FlowNode_DefaultedStringInput)
 
-FName UFlowNode_DefaultedStringInput::INPIN_StringInput = FName("String Input");
-
 UFlowNode_DefaultedStringInput::UFlowNode_DefaultedStringInput(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
@@ -16,7 +14,7 @@ UFlowNode_DefaultedStringInput::UFlowNode_DefaultedStringInput(const FObjectInit
 
 void UFlowNode_DefaultedStringInput::ExecuteInput(const FName& PinName)
 {
-	Super::ExecuteInput(PinName);
+	static const FName INPIN_StringInput = GET_MEMBER_NAME_CHECKED(UFlowNode_DefaultedStringInput, StringInput);
 
 	const FFlowDataPinResult_String StringResult = TryResolveDataPinAsString(INPIN_StringInput);
 

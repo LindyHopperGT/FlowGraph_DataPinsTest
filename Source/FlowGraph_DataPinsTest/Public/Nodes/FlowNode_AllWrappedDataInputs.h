@@ -27,10 +27,10 @@ public:
 	FFlowDataPinInputProperty_Int64 Int64InputProperty = 0;
 
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Float Input")
-	FFlowDataPinInputProperty_Float Float32InputProperty = 0.0f;
+	FFlowDataPinInputProperty_Float FloatInputProperty = 0.0f;
 
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Double Input")
-	FFlowDataPinInputProperty_Double Float64InputProperty = 0.0;
+	FFlowDataPinInputProperty_Double DoubleInputProperty = 0.0;
 
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Name Input")
 	FFlowDataPinInputProperty_Name NameInputProperty;
@@ -55,20 +55,6 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "GameplayTagContainer Input")
 	FFlowDataPinInputProperty_GameplayTagContainer GameplayTagContainerInputProperty;
-
-	static FName INPIN_BoolInput;
-	static FName INPIN_IntInput;
-	static FName INPIN_Int64Input;
-	static FName INPIN_FloatInput;
-	static FName INPIN_DoubleInput;
-	static FName INPIN_NameInput;
-	static FName INPIN_StringInput;
-	static FName INPIN_TextInput;
-	static FName INPIN_EnumInput;
-	static FName INPIN_VectorInput;
-	static FName INPIN_TransformInput;
-	static FName INPIN_GameplayTagInput;
-	static FName INPIN_GameplayTagContainerInput;
 
 public:
 	UFlowNode_AllWrappedDataInputs(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());

@@ -83,26 +83,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "GameplayTagContainer Output", meta = (SourceForOutputFlowPin, FlowPinType = "GameplayTagContainer"))
 	FGameplayTagContainer GameplayTagContainerOutput;
 
-	static FName OUTPIN_BoolOutput;
-	static FName OUTPIN_Int8Output;
-	static FName OUTPIN_Int16Output;
-	static FName OUTPIN_Int32Output;
-	static FName OUTPIN_Int64Output;
-	static FName OUTPIN_Uint8Output;
-	static FName OUTPIN_Uint16Output;
-	static FName OUTPIN_Uint32Output;
-	static FName OUTPIN_Uint64Output;
-	static FName OUTPIN_Float32Output;
-	static FName OUTPIN_Float64Output;
-	static FName OUTPIN_NameOutput;
-	static FName OUTPIN_StringOutput;
-	static FName OUTPIN_TextOutput;
-	static FName OUTPIN_EnumOutput;
-	static FName OUTPIN_VectorOutput;
-	static FName OUTPIN_TransformOutput;
-	static FName OUTPIN_GameplayTagOutput;
-	static FName OUTPIN_GameplayTagContainerOutput;
-
 public:
 	UFlowNode_AllAutoRawDataOutputs(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 

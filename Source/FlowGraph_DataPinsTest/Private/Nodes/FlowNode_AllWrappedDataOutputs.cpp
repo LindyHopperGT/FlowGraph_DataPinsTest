@@ -14,8 +14,6 @@ UFlowNode_AllWrappedDataOutputs::UFlowNode_AllWrappedDataOutputs(const FObjectIn
 
 void UFlowNode_AllWrappedDataOutputs::ExecuteInput(const FName& PinName)
 {
-	Super::ExecuteInput(PinName);
-
 	constexpr bool bFinish = true;
 	TriggerFirstOutput(bFinish);
 }

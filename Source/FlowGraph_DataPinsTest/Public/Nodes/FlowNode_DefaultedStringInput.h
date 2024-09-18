@@ -20,8 +20,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins, meta = (DefaultForInputFlowPin))
 	FString StringInput;
 
-	static FName INPIN_StringInput;
-
 public:
 
 	UFlowNode_DefaultedStringInput(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
