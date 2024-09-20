@@ -1,6 +1,7 @@
 // Copyright Riot Games, All Rights Reserved.
 
 #include "Nodes/FlowNode_AllAutoRawDataOutputs.h"
+#include "FlowTestInstancedStruct.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(FlowNode_AllAutoRawDataOutputs)
 
@@ -10,6 +11,11 @@ UFlowNode_AllAutoRawDataOutputs::UFlowNode_AllAutoRawDataOutputs(const FObjectIn
 #if WITH_EDITOR
 	Category = "Test";
 #endif
+
+	if (!InstancedStructOutput.GetScriptStruct())
+	{
+		InstancedStructOutput = FInstancedStruct(FFlowTestInstancedStruct::StaticStruct());
+	}
 }
 
 void UFlowNode_AllAutoRawDataOutputs::ExecuteInput(const FName& PinName)
@@ -272,4 +278,33 @@ FFlowDataPinResult_GameplayTagContainer UFlowNode_AllAutoRawDataOutputs::TrySupp
 	LogNote(FString::Printf(TEXT("%s supplied %s for pin %s"), *GetName(), *Result.Value.ToStringSimple(), *PinName.ToString()));
 
 	return Result;
+}
+
+FFlowDataPinResult_InstancedStruct UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsInstancedStruct_Implementation(const FName& PinName) const
+{
+	static const FName OUTPIN_InstancedStructOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, InstancedStructOutput);
+
+	FFlowDataPinResult_InstancedStruct InstancedStructResult;
+	if (PinName == OUTPIN_InstancedStructOutput)
+	{
+		InstancedStructResult = FFlowDataPinResult_InstancedStruct(InstancedStructOutput);
+	}
+	else
+	{
+		InstancedStructResult = Super::TrySupplyDataPinAsInstancedStruct_Implementation(PinName);
+	}
+
+	if (InstancedStructResult.Result == EFlowDataPinResolveResult::Success)
+	{
+		if (const UScriptStruct* ScriptStruct = InstancedStructResult.Value.GetScriptStruct())
+		{
+			if (ScriptStruct == FFlowTestInstancedStruct::StaticStruct())
+			{
+				const int32 IntPayload = InstancedStructResult.Value.Get<FFlowTestInstancedStruct>().IntProperty;
+				LogNote(FString::Printf(TEXT("%s supplied %d for pin %s"), *GetName(), IntPayload, *PinName.ToString()));
+			}
+		}
+	}
+
+	return InstancedStructResult;
 }

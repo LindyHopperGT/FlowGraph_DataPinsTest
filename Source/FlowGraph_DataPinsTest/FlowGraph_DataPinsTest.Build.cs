@@ -14,6 +14,7 @@ public class FlowGraph_DataPinsTest : ModuleRules
 			"Engine",
 			"GameplayTags",
 			"Flow",
+			"StructUtils",
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] 

@@ -1,6 +1,7 @@
 // Copyright Riot Games, All Rights Reserved.
 
 #include "Nodes/FlowNode_AllWrappedDataOutputs.h"
+#include "FlowTestInstancedStruct.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(FlowNode_AllWrappedDataOutputs)
 
@@ -115,4 +116,23 @@ FFlowDataPinResult_GameplayTagContainer UFlowNode_AllWrappedDataOutputs::TrySupp
 	LogNote(FString::Printf(TEXT("%s supplied %s for pin %s"), *GetName(), *Result.Value.ToString(), *PinName.ToString()));
 
 	return Result;
+}
+
+FFlowDataPinResult_InstancedStruct UFlowNode_AllWrappedDataOutputs::TrySupplyDataPinAsInstancedStruct_Implementation(const FName& PinName) const
+{
+	FFlowDataPinResult_InstancedStruct InstancedStructResult = Super::TrySupplyDataPinAsInstancedStruct_Implementation(PinName);
+
+	if (InstancedStructResult.Result == EFlowDataPinResolveResult::Success)
+	{
+		if (const UScriptStruct* ScriptStruct = InstancedStructResult.Value.GetScriptStruct())
+		{
+			if (ScriptStruct == FFlowTestInstancedStruct::StaticStruct())
+			{
+				const int32 IntPayload = InstancedStructResult.Value.Get<FFlowTestInstancedStruct>().IntProperty;
+				LogNote(FString::Printf(TEXT("%s supplied %d for pin %s"), *GetName(), IntPayload, *PinName.ToString()));
+			}
+		}
+	}
+
+	return InstancedStructResult;
 }

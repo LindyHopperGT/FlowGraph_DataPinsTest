@@ -56,6 +56,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "GameplayTagContainer Input")
 	FFlowDataPinInputProperty_GameplayTagContainer GameplayTagContainerInputProperty;
 
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "InstancedStruct Input")
+	FFlowDataPinInputProperty_InstancedStruct InstancedStructInputProperty;
+
 public:
 	UFlowNode_AllWrappedDataInputs(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 

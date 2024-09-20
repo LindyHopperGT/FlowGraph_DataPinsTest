@@ -56,6 +56,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "GameplayTagContainer Output")
 	FFlowDataPinOutputProperty_GameplayTagContainer GameplayTagContainerOutputProperty;
 
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "InstancedStruct Output")
+	FFlowDataPinOutputProperty_InstancedStruct InstancedStructOutputProperty;
+
 public:
 	UFlowNode_AllWrappedDataOutputs(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
@@ -64,7 +67,7 @@ public:
 	// --
 
 	// Must implement TrySupplyDataAs... for every EFlowPinType
-	FLOW_ASSERT_ENUM_MAX(EFlowPinType, 12);
+	FLOW_ASSERT_ENUM_MAX(EFlowPinType, 13);
 
 	// IFlowDataPinValueSupplierInterface
 	virtual FFlowDataPinResult_Bool TrySupplyDataPinAsBool_Implementation(const FName& PinName) const override;
@@ -78,5 +81,6 @@ public:
 	virtual FFlowDataPinResult_Transform TrySupplyDataPinAsTransform_Implementation(const FName& PinName) const override;
 	virtual FFlowDataPinResult_GameplayTag TrySupplyDataPinAsGameplayTag_Implementation(const FName& PinName) const override;
 	virtual FFlowDataPinResult_GameplayTagContainer TrySupplyDataPinAsGameplayTagContainer_Implementation(const FName& PinName) const override;
+	virtual FFlowDataPinResult_InstancedStruct TrySupplyDataPinAsInstancedStruct_Implementation(const FName& PinName) const override;
 	// --
 };
