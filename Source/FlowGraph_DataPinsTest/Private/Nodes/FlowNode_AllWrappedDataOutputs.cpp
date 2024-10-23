@@ -91,6 +91,15 @@ FFlowDataPinResult_Vector UFlowNode_AllWrappedDataOutputs::TrySupplyDataPinAsVec
 	return Result;
 }
 
+FFlowDataPinResult_Rotator UFlowNode_AllWrappedDataOutputs::TrySupplyDataPinAsRotator_Implementation(const FName& PinName) const
+{
+	FFlowDataPinResult_Rotator Result = Super::TrySupplyDataPinAsRotator_Implementation(PinName);
+
+	LogNote(FString::Printf(TEXT("%s supplied %s for pin %s"), *GetName(), *Result.Value.ToString(), *PinName.ToString()));
+
+	return Result;
+}
+
 FFlowDataPinResult_Transform UFlowNode_AllWrappedDataOutputs::TrySupplyDataPinAsTransform_Implementation(const FName& PinName) const
 {
 	FFlowDataPinResult_Transform Result = Super::TrySupplyDataPinAsTransform_Implementation(PinName);
@@ -135,4 +144,28 @@ FFlowDataPinResult_InstancedStruct UFlowNode_AllWrappedDataOutputs::TrySupplyDat
 	}
 
 	return InstancedStructResult;
+}
+
+FFlowDataPinResult_Object UFlowNode_AllWrappedDataOutputs::TrySupplyDataPinAsObject_Implementation(const FName& PinName) const
+{
+	FFlowDataPinResult_Object ObjectResult = Super::TrySupplyDataPinAsObject_Implementation(PinName);
+
+	if (ObjectResult.Result == EFlowDataPinResolveResult::Success)
+	{
+		LogNote(FString::Printf(TEXT("%s supplied %s for pin %s"), *GetName(), ObjectResult.Value ? *ObjectResult.Value->GetName() : TEXT("null"), *PinName.ToString()));
+	}
+
+	return ObjectResult;
+}
+
+FFlowDataPinResult_Class UFlowNode_AllWrappedDataOutputs::TrySupplyDataPinAsClass_Implementation(const FName& PinName) const
+{
+	FFlowDataPinResult_Class ClassResult = Super::TrySupplyDataPinAsClass_Implementation(PinName);
+
+	if (ClassResult.Result == EFlowDataPinResolveResult::Success)
+	{
+		LogNote(FString::Printf(TEXT("%s supplied %s for pin %s"), *GetName(), *ClassResult.GetAsSoftClass().ToString(), *PinName.ToString()));
+	}
+
+	return ClassResult;
 }

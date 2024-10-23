@@ -90,6 +90,13 @@ void UFlowNode_AllWrappedDataInputs::ExecuteInput(const FName& PinName)
 		LogNote(FString::Printf(TEXT("%s resolved %s for pin %s"), *GetName(), *VectorResult.Value.ToString(), *INPIN_VectorInput.ToString()));
 	}
 
+	static const FName INPIN_RotatorInput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllWrappedDataInputs, RotatorInputProperty);
+	const FFlowDataPinResult_Rotator RotatorResult = TryResolveDataPinAsRotator(INPIN_RotatorInput);
+	if (RotatorResult.Result == EFlowDataPinResolveResult::Success)
+	{
+		LogNote(FString::Printf(TEXT("%s resolved %s for pin %s"), *GetName(), *RotatorResult.Value.ToString(), *INPIN_RotatorInput.ToString()));
+	}
+
 	static const FName INPIN_TransformInput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllWrappedDataInputs, TransformInputProperty);
 	const FFlowDataPinResult_Transform TransformResult = TryResolveDataPinAsTransform(INPIN_TransformInput);
 	if (TransformResult.Result == EFlowDataPinResolveResult::Success)
@@ -123,6 +130,34 @@ void UFlowNode_AllWrappedDataInputs::ExecuteInput(const FName& PinName)
 				LogNote(FString::Printf(TEXT("%s Resolved %d for pin %s"), *GetName(), IntPayload, *INPIN_InstancedStructInput.ToString()));
 			}
 		}
+	}
+
+	static const FName INPIN_AssetObjectInput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllWrappedDataInputs, AssetObjectInputProperty);
+	const FFlowDataPinResult_Object AssetObjectResult = TryResolveDataPinAsObject(INPIN_AssetObjectInput);
+	if (AssetObjectResult.Result == EFlowDataPinResolveResult::Success)
+	{
+		LogNote(FString::Printf(TEXT("%s resolved %s for pin %s"), *GetName(), AssetObjectResult.Value ? *AssetObjectResult.Value->GetName() : TEXT("null"), *INPIN_AssetObjectInput.ToString()));
+	}
+
+	static const FName INPIN_InlineOjectInput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllWrappedDataInputs, InlineObjectInputProperty);
+	const FFlowDataPinResult_Object InlineObjectResult = TryResolveDataPinAsObject(INPIN_InlineOjectInput);
+	if (InlineObjectResult.Result == EFlowDataPinResolveResult::Success)
+	{
+		LogNote(FString::Printf(TEXT("%s resolved %s for pin %s"), *GetName(), InlineObjectResult.Value ? *InlineObjectResult.Value->GetName() : TEXT("null"), *INPIN_InlineOjectInput.ToString()));
+	}
+
+	static const FName INPIN_InstancedRawInlineOjectInput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllWrappedDataInputs, InstancedRawInlineObjectOutput);
+	const FFlowDataPinResult_Object InstancedRawInlineObjectResult = TryResolveDataPinAsObject(INPIN_InstancedRawInlineOjectInput);
+	if (InlineObjectResult.Result == EFlowDataPinResolveResult::Success)
+	{
+		LogNote(FString::Printf(TEXT("%s resolved %s for pin %s"), *GetName(), InstancedRawInlineObjectResult.Value ? *InstancedRawInlineObjectResult.Value->GetName() : TEXT("null"), *INPIN_InstancedRawInlineOjectInput.ToString()));
+	}
+
+	static const FName INPIN_ClassInput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllWrappedDataInputs, ClassInputProperty);
+	const FFlowDataPinResult_Class ClassResult = TryResolveDataPinAsClass(INPIN_ClassInput);
+	if (ClassResult.Result == EFlowDataPinResolveResult::Success)
+	{
+		LogNote(FString::Printf(TEXT("%s resolved %s for pin %s"), *GetName(), *ClassResult.GetAsSoftClass().ToString(), *INPIN_ClassInput.ToString()));
 	}
 
 	constexpr bool bFinish = true;

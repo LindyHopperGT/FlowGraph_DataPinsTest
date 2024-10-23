@@ -2,6 +2,8 @@
 
 #include "Nodes/FlowNode_AllAutoRawDataOutputs.h"
 #include "FlowTestInstancedStruct.h"
+#include "AddOns/FlowNodeAddOn.h"
+#include "FlowAsset.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(FlowNode_AllAutoRawDataOutputs)
 
@@ -223,6 +225,25 @@ FFlowDataPinResult_Vector UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsVec
 	return Result;
 }
 
+FFlowDataPinResult_Rotator UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsRotator_Implementation(const FName& PinName) const
+{
+	static const FName OUTPIN_RotatorOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, RotatorOutput);
+
+	FFlowDataPinResult_Rotator Result;
+	if (PinName == OUTPIN_RotatorOutput)
+	{
+		Result = FFlowDataPinResult_Rotator(RotatorOutput);
+	}
+	else
+	{
+		Result = Super::TrySupplyDataPinAsRotator_Implementation(PinName);
+	}
+
+	LogNote(FString::Printf(TEXT("%s supplied %s for pin %s"), *GetName(), *Result.Value.ToString(), *PinName.ToString()));
+
+	return Result;
+}
+
 FFlowDataPinResult_Transform UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsTransform_Implementation(const FName& PinName) const
 {
 	static const FName OUTPIN_TransformOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, TransformOutput);
@@ -307,4 +328,73 @@ FFlowDataPinResult_InstancedStruct UFlowNode_AllAutoRawDataOutputs::TrySupplyDat
 	}
 
 	return InstancedStructResult;
+}
+
+FFlowDataPinResult_Object UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsObject_Implementation(const FName& PinName) const
+{
+	static const FName OUTPIN_AssetObjectOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, AssetObjectOutput);
+	static const FName OUTPIN_InlineObjectOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, InlineObjectOutput);
+	static const FName OUTPIN_SoftObjectPtrOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, SoftObjectPtrOutput);
+	static const FName OUTPIN_SoftObjectPathOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, SoftObjectPathOutput);
+
+	FFlowDataPinResult_Object ObjectResult;
+	if (PinName == OUTPIN_AssetObjectOutput)
+	{
+		ObjectResult = FFlowDataPinResult_Object(AssetObjectOutput);
+	}
+	else if (PinName == OUTPIN_InlineObjectOutput)
+	{
+		ObjectResult = FFlowDataPinResult_Object(InlineObjectOutput.Get());
+	}
+	else if (PinName == OUTPIN_SoftObjectPtrOutput)
+	{
+		ObjectResult = FFlowDataPinResult_Object(SoftObjectPtrOutput.ToSoftObjectPath().ResolveObject());
+	}
+	else if (PinName == OUTPIN_SoftObjectPathOutput)
+	{
+		ObjectResult = FFlowDataPinResult_Object(SoftObjectPathOutput.ResolveObject());
+	}
+	else
+	{
+		ObjectResult = Super::TrySupplyDataPinAsObject_Implementation(PinName);
+	}
+
+	if (ObjectResult.Result == EFlowDataPinResolveResult::Success)
+	{
+		LogNote(FString::Printf(TEXT("%s supplied %s for pin %s"), *GetName(), ObjectResult.Value ? *ObjectResult.Value->GetName() : TEXT("null"), *PinName.ToString()));
+	}
+
+	return ObjectResult;
+}
+
+FFlowDataPinResult_Class UFlowNode_AllAutoRawDataOutputs::TrySupplyDataPinAsClass_Implementation(const FName& PinName) const
+{
+	static const FName OUTPIN_ClassOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, ClassOutput);
+	static const FName OUTPIN_SoftClassPtrOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, SoftClassPtrOutput);
+	static const FName OUTPIN_SoftClassPathOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_AllAutoRawDataOutputs, SoftClassPathOutput);
+
+	FFlowDataPinResult_Class ClassResult;
+	if (PinName == OUTPIN_ClassOutput)
+	{
+		ClassResult = FFlowDataPinResult_Class(ClassOutput);
+	}
+	else if (PinName == OUTPIN_SoftClassPtrOutput)
+	{
+		ClassResult = FFlowDataPinResult_Class(FSoftClassPath(SoftClassPtrOutput.ToSoftObjectPath().ToString()));
+	}
+	else if (PinName == OUTPIN_SoftClassPathOutput)
+	{
+		ClassResult = FFlowDataPinResult_Class(SoftClassPathOutput);
+	}
+	else
+	{
+		ClassResult = Super::TrySupplyDataPinAsClass_Implementation(PinName);
+	}
+
+	if (ClassResult.Result == EFlowDataPinResolveResult::Success)
+	{
+		LogNote(FString::Printf(TEXT("%s supplied %s for pin %s"), *GetName(), *ClassResult.GetAsSoftClass().ToString(), *PinName.ToString()));
+	}
+
+	return ClassResult;
 }

@@ -2,10 +2,10 @@
 
 #pragma once
 
-#include "FlowTestInstancedStruct.generated.h"
+#include "FlowTestInlineObject.generated.h"
 
-USTRUCT(BlueprintType, DisplayName = "Flow Data Pins Test InstancedStruct")
-struct FLOWGRAPH_DATAPINSTEST_API FFlowTestInstancedStruct
+UCLASS(EditInlineNew, BlueprintType, DisplayName = "Flow Data Pins Test Inline Object")
+class UFlowTestInlineObject : public UObject
 {
 	GENERATED_BODY()
 

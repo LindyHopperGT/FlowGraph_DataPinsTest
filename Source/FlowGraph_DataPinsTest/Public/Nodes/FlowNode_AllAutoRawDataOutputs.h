@@ -7,6 +7,8 @@
 
 #include "FlowNode_AllAutoRawDataOutputs.generated.h"
 
+class UFlowTestInlineObject;
+
 UCLASS(BlueprintType, DisplayName = "AllAutoRawDataOutputs")
 class FLOWGRAPH_DATAPINSTEST_API UFlowNode_AllAutoRawDataOutputs : public UFlowNode
 {
@@ -74,6 +76,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Vector Output", meta = (SourceForOutputFlowPin, FlowPinType = "Vector"))
 	FVector VectorOutput;
 
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Rotator Output", meta = (SourceForOutputFlowPin, FlowPinType = "Rotator"))
+	FRotator RotatorOutput;
+
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Transform Output", meta = (SourceForOutputFlowPin, FlowPinType = "Transform"))
 	FTransform TransformOutput;
 
@@ -86,6 +91,27 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "InstancedStruct Output", meta = (SourceForOutputFlowPin, FlowPinType = "InstancedStruct"))
 	FInstancedStruct InstancedStructOutput;
 
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Asset Object Output", meta = (SourceForOutputFlowPin, FlowPinType = "Object"))
+	TObjectPtr<UFlowAsset> AssetObjectOutput = nullptr;
+
+	UPROPERTY(EditAnywhere, Instanced, Category = DataPins, DisplayName = "Inline Object Output", meta = (SourceForOutputFlowPin, FlowPinType = "Object"))
+	TObjectPtr<UFlowTestInlineObject> InlineObjectOutput = nullptr;
+
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "SoftObjectPtr Output", meta = (SourceForOutputFlowPin, FlowPinType = "Object"))
+	TSoftObjectPtr<UFlowAsset> SoftObjectPtrOutput = nullptr;
+
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "SoftObjectPath Output", meta = (AllowedClasses = "/Script/Flow.FlowAsset", SourceForOutputFlowPin, FlowPinType = "Object"))
+	FSoftObjectPath SoftObjectPathOutput;
+
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Class Output", meta = (SourceForOutputFlowPin, FlowPinType = "Class"))
+	TSubclassOf<UFlowNode> ClassOutput = nullptr;
+
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "SoftClassPtr Output", meta = (SourceForOutputFlowPin, FlowPinType = "Class"))
+	TSoftClassPtr<UFlowNode> SoftClassPtrOutput = nullptr;
+
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "SoftClassPath Output", meta = (MetaClass = "/Script/Flow.FlowNode", SourceForOutputFlowPin, FlowPinType = "Class"))
+	FSoftClassPath SoftClassPathOutput;
+
 public:
 	UFlowNode_AllAutoRawDataOutputs(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
@@ -94,7 +120,7 @@ public:
 	// --
 
 	// Must implement TrySupplyDataAs... for every EFlowPinType
-	FLOW_ASSERT_ENUM_MAX(EFlowPinType, 13);
+	FLOW_ASSERT_ENUM_MAX(EFlowPinType, 16);
 
 	// IFlowDataPinValueSupplierInterface
 	virtual FFlowDataPinResult_Bool TrySupplyDataPinAsBool_Implementation(const FName& PinName) const override;
@@ -105,9 +131,12 @@ public:
 	virtual FFlowDataPinResult_Text TrySupplyDataPinAsText_Implementation(const FName& PinName) const override;
 	virtual FFlowDataPinResult_Enum TrySupplyDataPinAsEnum_Implementation(const FName& PinName) const override;
 	virtual FFlowDataPinResult_Vector TrySupplyDataPinAsVector_Implementation(const FName& PinName) const override;
+	virtual FFlowDataPinResult_Rotator TrySupplyDataPinAsRotator_Implementation(const FName& PinName) const override;
 	virtual FFlowDataPinResult_Transform TrySupplyDataPinAsTransform_Implementation(const FName& PinName) const override;
 	virtual FFlowDataPinResult_GameplayTag TrySupplyDataPinAsGameplayTag_Implementation(const FName& PinName) const override;
 	virtual FFlowDataPinResult_GameplayTagContainer TrySupplyDataPinAsGameplayTagContainer_Implementation(const FName& PinName) const override;
 	virtual FFlowDataPinResult_InstancedStruct TrySupplyDataPinAsInstancedStruct_Implementation(const FName& PinName) const override;
+	virtual FFlowDataPinResult_Object TrySupplyDataPinAsObject_Implementation(const FName& PinName) const override;
+	virtual FFlowDataPinResult_Class TrySupplyDataPinAsClass_Implementation(const FName& PinName) const override;
 	// --
 };

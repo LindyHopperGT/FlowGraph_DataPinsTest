@@ -47,6 +47,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Vector Output")
 	FFlowDataPinOutputProperty_Vector VectorOutputProperty;
 
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Rotator Output")
+	FFlowDataPinOutputProperty_Rotator RotatorOutputProperty;
+
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Transform Output")
 	FFlowDataPinOutputProperty_Transform TransformOutputProperty;
 
@@ -59,6 +62,15 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "InstancedStruct Output")
 	FFlowDataPinOutputProperty_InstancedStruct InstancedStructOutputProperty;
 
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Asset Object Output", meta = (MetaClass = "/Script/Flow.FlowAsset"))
+	FFlowDataPinOutputProperty_Object ObjectOutputProperty;
+
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Inline Object Output", meta = (MetaClass = "/Script/FlowGraph_DataPinsTest.FlowTestInlineObject"))
+	FFlowDataPinOutputProperty_Object InlineObjectOutputProperty;
+
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Class Output", meta = (MetaClass = "/Script/Flow.FlowNode"))
+	FFlowDataPinOutputProperty_Class ClassOutputProperty;
+
 public:
 	UFlowNode_AllWrappedDataOutputs(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
@@ -67,7 +79,7 @@ public:
 	// --
 
 	// Must implement TrySupplyDataAs... for every EFlowPinType
-	FLOW_ASSERT_ENUM_MAX(EFlowPinType, 13);
+	FLOW_ASSERT_ENUM_MAX(EFlowPinType, 16);
 
 	// IFlowDataPinValueSupplierInterface
 	virtual FFlowDataPinResult_Bool TrySupplyDataPinAsBool_Implementation(const FName& PinName) const override;
@@ -78,9 +90,12 @@ public:
 	virtual FFlowDataPinResult_Text TrySupplyDataPinAsText_Implementation(const FName& PinName) const override;
 	virtual FFlowDataPinResult_Enum TrySupplyDataPinAsEnum_Implementation(const FName& PinName) const override;
 	virtual FFlowDataPinResult_Vector TrySupplyDataPinAsVector_Implementation(const FName& PinName) const override;
+	virtual FFlowDataPinResult_Rotator TrySupplyDataPinAsRotator_Implementation(const FName& PinName) const override;
 	virtual FFlowDataPinResult_Transform TrySupplyDataPinAsTransform_Implementation(const FName& PinName) const override;
 	virtual FFlowDataPinResult_GameplayTag TrySupplyDataPinAsGameplayTag_Implementation(const FName& PinName) const override;
 	virtual FFlowDataPinResult_GameplayTagContainer TrySupplyDataPinAsGameplayTagContainer_Implementation(const FName& PinName) const override;
 	virtual FFlowDataPinResult_InstancedStruct TrySupplyDataPinAsInstancedStruct_Implementation(const FName& PinName) const override;
+	virtual FFlowDataPinResult_Object TrySupplyDataPinAsObject_Implementation(const FName& PinName) const override;
+	virtual FFlowDataPinResult_Class TrySupplyDataPinAsClass_Implementation(const FName& PinName) const override;
 	// --
 };

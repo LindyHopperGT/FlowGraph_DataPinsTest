@@ -47,6 +47,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Vector Input")
 	FFlowDataPinInputProperty_Vector VectorInputProperty;
 
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Rotator Input")
+	FFlowDataPinInputProperty_Rotator RotatorInputProperty;
+
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Transform Input")
 	FFlowDataPinInputProperty_Transform TransformInputProperty;
 
@@ -59,6 +62,19 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "InstancedStruct Input")
 	FFlowDataPinInputProperty_InstancedStruct InstancedStructInputProperty;
 
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Asset Object Input", meta = (MetaClass = "/Script/Flow.FlowAsset"))
+	FFlowDataPinInputProperty_Object AssetObjectInputProperty;
+
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Inline Object Input", meta = (MetaClass = "/Script/FlowGraph_DataPinsTest.FlowTestInlineObject"))
+	FFlowDataPinInputProperty_Object InlineObjectInputProperty;
+
+	// Special test for unwrapped instanced object input
+	UPROPERTY(EditAnywhere, Instanced, Category = DataPins, DisplayName = "Instanced Raw Inline Object Input", meta = (MetaClass = "/Script/FlowGraph_DataPinsTest.FlowTestInlineObject", DefaultForInputFlowPin, FlowPinType = "Object"))
+	TObjectPtr<UFlowTestInlineObject> InstancedRawInlineObjectOutput = nullptr;
+
+	UPROPERTY(EditAnywhere, Category = DataPins, DisplayName = "Class Input", meta = (MetaClass = "/Script/Flow.FlowNode"))
+	FFlowDataPinInputProperty_Class ClassInputProperty;
+	
 public:
 	UFlowNode_AllWrappedDataInputs(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
