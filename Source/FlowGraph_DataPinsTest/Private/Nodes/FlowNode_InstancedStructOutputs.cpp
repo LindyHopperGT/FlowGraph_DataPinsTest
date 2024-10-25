@@ -10,7 +10,6 @@ UFlowNode_InstancedStructOutputs::UFlowNode_InstancedStructOutputs(const FObject
 #if WITH_EDITOR
 	Category = "Test";
 #endif
-
 }
 
 void UFlowNode_InstancedStructOutputs::ExecuteInput(const FName& PinName)
