@@ -13,6 +13,7 @@ UFlowNode_ManualRawStringOutput::UFlowNode_ManualRawStringOutput(const FObjectIn
 	Category = "Test";
 #endif
 
+	// NOTE (gtaylor) For this flownode, we're creating the pin manually, to test that code pathway
 	OUTPIN_StringOutput = GET_MEMBER_NAME_CHECKED(UFlowNode_ManualRawStringOutput, StringOutput);
 	OutputPins.Add(FFlowPin(OUTPIN_StringOutput, EFlowPinType::String));
 }
@@ -27,6 +28,7 @@ FFlowDataPinResult_String UFlowNode_ManualRawStringOutput::TrySupplyDataPinAsStr
 {
 	FFlowDataPinResult_String Result;
 
+	// NOTE (gtaylor) For this flownode, we're mapping the pin manually, to test that code pathway
 	if (PinName == OUTPIN_StringOutput)
 	{
 		Result = FFlowDataPinResult_String(StringOutput);

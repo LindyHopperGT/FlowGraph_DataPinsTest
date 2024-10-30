@@ -4,6 +4,7 @@
 
 #include "Nodes/FlowNode.h"
 #include "Types/FlowDataPinProperties.h"
+#include "FlowTestInstancedStruct.h"
 
 #include "FlowNode_InstancedStructOutputs.generated.h"
 

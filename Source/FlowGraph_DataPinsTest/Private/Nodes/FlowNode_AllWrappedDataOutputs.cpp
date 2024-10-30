@@ -19,6 +19,9 @@ void UFlowNode_AllWrappedDataOutputs::ExecuteInput(const FName& PinName)
 	TriggerFirstOutput(bFinish);
 }
 
+// NOTE (gtaylor) you don't need to override any of these functions when using the auto-pin binding metadata features 
+// (like this class does).  I'm only overriding them so I can set breakpoints and print results (for testing).
+
 FFlowDataPinResult_Bool UFlowNode_AllWrappedDataOutputs::TrySupplyDataPinAsBool_Implementation(const FName& PinName) const
 {
 	FFlowDataPinResult_Bool Result = Super::TrySupplyDataPinAsBool_Implementation(PinName);
