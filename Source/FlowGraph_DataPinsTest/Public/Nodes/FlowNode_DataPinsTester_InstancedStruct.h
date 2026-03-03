@@ -27,7 +27,7 @@ public:
 	TArray<FInstancedStruct> InstancedStruct_Array_Output = { FInstancedStruct(FFlowTestInstancedStruct::StaticStruct()) };
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinValue_InstancedStruct InstancedStruct_Wrapped_Output = FInstancedStruct(FFlowTestInstancedStruct::StaticStruct());
+	FFlowDataPinValue_InstancedStruct InstancedStruct_Wrapped_Output = FFlowDataPinValue_InstancedStruct(FInstancedStruct(FFlowTestInstancedStruct::StaticStruct()));
 
 	UPROPERTY(EditAnywhere, Category = DataPins, meta = (DefaultForInputFlowPin, FlowPinType = "InstancedStruct"))
 	FInstancedStruct InstancedStruct_Untyped_Single_Input = FInstancedStruct(FFlowTestInstancedStruct::StaticStruct());
@@ -46,10 +46,10 @@ public:
 
 	// #FlowDataPinLegacy
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_InstancedStruct InstancedStruct_LegacyWrapped_Output = FInstancedStruct(FFlowTestInstancedStruct::StaticStruct());
+	FFlowDataPinOutputProperty_InstancedStruct InstancedStruct_LegacyWrapped_Output = FFlowDataPinOutputProperty_InstancedStruct(FInstancedStruct(FFlowTestInstancedStruct::StaticStruct()));
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_InstancedStruct InstancedStruct_LegacyWrapped_Input = FInstancedStruct(FFlowTestInstancedStruct::StaticStruct());
+	FFlowDataPinInputProperty_InstancedStruct InstancedStruct_LegacyWrapped_Input = FFlowDataPinInputProperty_InstancedStruct(FInstancedStruct(FFlowTestInstancedStruct::StaticStruct()));
 	// --
 
 public:
@@ -59,5 +59,5 @@ public:
 	virtual void ExecuteInput(const FName& PinName) override;
 
 	// IFlowDataPinValueSupplierInterface
-	virtual FFlowDataPinResult TrySupplyDataPin_Implementation(FName PinName) const override;
+	virtual FFlowDataPinResult TrySupplyDataPin(FName PinName) const override;
 };

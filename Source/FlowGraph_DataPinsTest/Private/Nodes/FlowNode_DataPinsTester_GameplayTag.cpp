@@ -103,8 +103,8 @@ void UFlowNode_DataPinsTester_GameplayTag::ExecuteInput(const FName& PinName)
 	TriggerFirstOutput(bFinish);
 }
 
-FFlowDataPinResult UFlowNode_DataPinsTester_GameplayTag::TrySupplyDataPin_Implementation(FName PinName) const
+FFlowDataPinResult UFlowNode_DataPinsTester_GameplayTag::TrySupplyDataPin(FName PinName) const
 {
-	FFlowDataPinResult DataPinResult = Super::TrySupplyDataPin_Implementation(PinName);
+	FFlowDataPinResult DataPinResult = Super::TrySupplyDataPin(PinName);
 	return DataPinResult;
 }

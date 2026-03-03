@@ -48,16 +48,16 @@ public:
 
 	// #FlowDataPinLegacy
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Float Float_LegacyWrapped_Output = 21.123f;
+	FFlowDataPinOutputProperty_Float Float_LegacyWrapped_Output = FFlowDataPinOutputProperty_Float(21.123f);
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Double Double_LegacyWrapped_Output = 22.123;
+	FFlowDataPinOutputProperty_Double Double_LegacyWrapped_Output = FFlowDataPinOutputProperty_Double(22.123);
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Float Float_LegacyWrapped_Input = -21.123f;
+	FFlowDataPinInputProperty_Float Float_LegacyWrapped_Input = FFlowDataPinInputProperty_Float(-21.123f);
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Double Double_LegacyWrapped_Input = 22.123;
+	FFlowDataPinInputProperty_Double Double_LegacyWrapped_Input = FFlowDataPinInputProperty_Double(22.123);
 	// --
 
 public:
@@ -67,5 +67,5 @@ public:
 	virtual void ExecuteInput(const FName& PinName) override;
 
 	// IFlowDataPinValueSupplierInterface
-	virtual FFlowDataPinResult TrySupplyDataPin_Implementation(FName PinName) const override;
+	virtual FFlowDataPinResult TrySupplyDataPin(FName PinName) const override;
 };

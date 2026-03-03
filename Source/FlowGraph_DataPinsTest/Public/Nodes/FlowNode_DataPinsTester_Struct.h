@@ -63,22 +63,22 @@ public:
 
 	// #FlowDataPinLegacy
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Vector Vector_LegacyWrapped_Output = FVector(10);
+	FFlowDataPinOutputProperty_Vector Vector_LegacyWrapped_Output = FFlowDataPinOutputProperty_Vector(FVector(10));
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Rotator Rotator_LegacyWrapped_Output = FRotator(11);
+	FFlowDataPinOutputProperty_Rotator Rotator_LegacyWrapped_Output = FFlowDataPinOutputProperty_Rotator(FRotator(11));
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Transform Transform_LegacyWrapped_Output = FTransform(FRotator(22), FVector(22));
+	FFlowDataPinOutputProperty_Transform Transform_LegacyWrapped_Output = FFlowDataPinOutputProperty_Transform(FTransform(FRotator(22), FVector(22)));
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Vector Vector_LegacyWrapped_Input = FVector(-10);
+	FFlowDataPinInputProperty_Vector Vector_LegacyWrapped_Input = FFlowDataPinInputProperty_Vector(FVector(-10));
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Rotator Rotator_LegacyWrapped_Input = FRotator(-11);
+	FFlowDataPinInputProperty_Rotator Rotator_LegacyWrapped_Input = FFlowDataPinInputProperty_Rotator(FRotator(-11));
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Transform Transform_LegacyWrapped_Input = FTransform(FRotator(-22), FVector(-22));
+	FFlowDataPinInputProperty_Transform Transform_LegacyWrapped_Input = FFlowDataPinInputProperty_Transform(FTransform(FRotator(-22), FVector(-22)));
 	// --
 
 public:
@@ -88,5 +88,5 @@ public:
 	virtual void ExecuteInput(const FName& PinName) override;
 
 	// IFlowDataPinValueSupplierInterface
-	virtual FFlowDataPinResult TrySupplyDataPin_Implementation(FName PinName) const override;
+	virtual FFlowDataPinResult TrySupplyDataPin(FName PinName) const override;
 };

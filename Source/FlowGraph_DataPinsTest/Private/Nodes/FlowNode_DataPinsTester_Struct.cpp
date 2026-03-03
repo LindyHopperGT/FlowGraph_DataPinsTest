@@ -119,8 +119,8 @@ void UFlowNode_DataPinsTester_Struct::ExecuteInput(const FName& PinName)
 	TriggerFirstOutput(bFinish);
 }
 
-FFlowDataPinResult UFlowNode_DataPinsTester_Struct::TrySupplyDataPin_Implementation(FName PinName) const
+FFlowDataPinResult UFlowNode_DataPinsTester_Struct::TrySupplyDataPin(FName PinName) const
 {
-	FFlowDataPinResult DataPinResult = Super::TrySupplyDataPin_Implementation(PinName);
+	FFlowDataPinResult DataPinResult = Super::TrySupplyDataPin(PinName);
 	return DataPinResult;
 }

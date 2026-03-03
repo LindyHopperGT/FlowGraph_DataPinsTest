@@ -32,10 +32,10 @@ public:
 	FFlowDataPinValue_Name Name_Wrapped_Output = FFlowDataPinValue_Name({ "Marge", "Ned" });
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinValue_String String_Wrapped_Output = FString(TEXT("Olivia"));
+	FFlowDataPinValue_String String_Wrapped_Output = FFlowDataPinValue_String(FString(TEXT("Olivia")));
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinValue_Text Text_Wrapped_Output = FText::FromString(TEXT("Peter"));
+	FFlowDataPinValue_Text Text_Wrapped_Output = FFlowDataPinValue_Text(FText::FromString(TEXT("Peter")));
 
 	UPROPERTY(EditAnywhere, Category = DataPins, meta = (DefaultForInputFlowPin, FlowPinType = "Name"))
 	FName Name_Single_Input = "-Quinn";
@@ -56,26 +56,26 @@ public:
 	TArray<FText> Text_Array_Input = { FText::FromString("-Xavier"), FText::FromString("-Yenta") };
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinValue_String String_Wrapped_Input = FString(TEXT("-Barney"));
+	FFlowDataPinValue_String String_Wrapped_Input = FFlowDataPinValue_String(FString(TEXT("-Barney")));
 
 	// #FlowDataPinLegacy
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Name Name_LegacyWrapped_Output = FName("Zach");
+	FFlowDataPinOutputProperty_Name Name_LegacyWrapped_Output = FFlowDataPinOutputProperty_Name(FName("Zach"));
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_String String_LegacyWrapped_Output = FString(TEXT("Abe"));
+	FFlowDataPinOutputProperty_String String_LegacyWrapped_Output = FFlowDataPinOutputProperty_String(FString(TEXT("Abe")));
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Text Text_LegacyWrapped_Output = FText::FromString("Barney");
+	FFlowDataPinOutputProperty_Text Text_LegacyWrapped_Output = FFlowDataPinOutputProperty_Text(FText::FromString("Barney"));
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Name Name_LegacyWrapped_Input = FName("-Zack");
+	FFlowDataPinInputProperty_Name Name_LegacyWrapped_Input = FFlowDataPinInputProperty_Name(FName("-Zack"));
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_String String_LegacyWrapped_Input = FString(TEXT("-Abe"));
+	FFlowDataPinInputProperty_String String_LegacyWrapped_Input = FFlowDataPinInputProperty_String(FString(TEXT("-Abe")));
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Text Text_LegacyWrapped_Input = FText::FromString("-Barney");
+	FFlowDataPinInputProperty_Text Text_LegacyWrapped_Input = FFlowDataPinInputProperty_Text(FText::FromString("-Barney"));
 	// --
 
 public:
@@ -85,5 +85,5 @@ public:
 	virtual void ExecuteInput(const FName& PinName) override;
 
 	// IFlowDataPinValueSupplierInterface
-	virtual FFlowDataPinResult TrySupplyDataPin_Implementation(FName PinName) const override;
+	virtual FFlowDataPinResult TrySupplyDataPin(FName PinName) const override;
 };

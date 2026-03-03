@@ -42,16 +42,16 @@ public:
 
 	// #FlowDataPinLegacy
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Int32 Int_LegacyWrapped_Output = 24;
+	FFlowDataPinOutputProperty_Int32 Int_LegacyWrapped_Output = FFlowDataPinOutputProperty_Int32(-24);
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Int64 Int64_LegacyWrapped_Output = 25;
+	FFlowDataPinOutputProperty_Int64 Int64_LegacyWrapped_Output = FFlowDataPinOutputProperty_Int64(25);
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Int32 Int32_LegacyWrapped_Input = -26;
+	FFlowDataPinInputProperty_Int32 Int32_LegacyWrapped_Input = FFlowDataPinInputProperty_Int32(-26);
 
 	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Int64 Int64_LegacyWrapped_Input = -27;
+	FFlowDataPinInputProperty_Int64 Int64_LegacyWrapped_Input = FFlowDataPinInputProperty_Int64(-27);
 	// --
 
 public:
@@ -61,5 +61,5 @@ public:
 	virtual void ExecuteInput(const FName& PinName) override;
 
 	// IFlowDataPinValueSupplierInterface
-	virtual FFlowDataPinResult TrySupplyDataPin_Implementation(FName PinName) const override;
+	virtual FFlowDataPinResult TrySupplyDataPin(FName PinName) const override;
 };
