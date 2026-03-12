@@ -7,8 +7,7 @@
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(FlowNode_DataPinsTester_Bool)
 
-UFlowNode_DataPinsTester_Bool::UFlowNode_DataPinsTester_Bool(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer)
+UFlowNode_DataPinsTester_Bool::UFlowNode_DataPinsTester_Bool()
 {
 #if WITH_EDITOR
 	Category = "Flow|Test";

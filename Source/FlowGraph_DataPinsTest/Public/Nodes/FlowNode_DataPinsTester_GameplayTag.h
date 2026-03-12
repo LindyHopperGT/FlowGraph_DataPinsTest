@@ -55,7 +55,7 @@ public:
 	// --
 
 public:
-	UFlowNode_DataPinsTester_GameplayTag(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
+	UFlowNode_DataPinsTester_GameplayTag();
 
 	// IFlowCoreExecutableInterface
 	virtual void ExecuteInput(const FName& PinName) override;

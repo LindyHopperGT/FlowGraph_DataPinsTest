@@ -5,8 +5,7 @@
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(FlowNode_DataPinsTester_GameplayTag)
 
-UFlowNode_DataPinsTester_GameplayTag::UFlowNode_DataPinsTester_GameplayTag(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer)
+UFlowNode_DataPinsTester_GameplayTag::UFlowNode_DataPinsTester_GameplayTag()
 {
 #if WITH_EDITOR
 	Category = "Flow|Test";

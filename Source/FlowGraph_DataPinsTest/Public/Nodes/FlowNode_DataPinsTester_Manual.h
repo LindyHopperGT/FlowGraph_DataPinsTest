@@ -21,7 +21,7 @@ public:
 	static FName OUTPIN_StringOutput;
 
 public:
-	UFlowNode_DataPinsTester_Manual(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
+	UFlowNode_DataPinsTester_Manual();
 
 	// IFlowCoreExecutableInterface
 	virtual void ExecuteInput(const FName& PinName) override;

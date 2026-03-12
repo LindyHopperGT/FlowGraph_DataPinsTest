@@ -7,8 +7,7 @@
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(FlowNode_DataPinsTester_Enum)
 
-UFlowNode_DataPinsTester_Enum::UFlowNode_DataPinsTester_Enum(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer)
+UFlowNode_DataPinsTester_Enum::UFlowNode_DataPinsTester_Enum()
 {
 #if WITH_EDITOR
 	Category = "Flow|Test";

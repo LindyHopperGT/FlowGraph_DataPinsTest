@@ -82,7 +82,7 @@ public:
 	// --
 
 public:
-	UFlowNode_DataPinsTester_Struct(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
+	UFlowNode_DataPinsTester_Struct();
 
 	// IFlowCoreExecutableInterface
 	virtual void ExecuteInput(const FName& PinName) override;

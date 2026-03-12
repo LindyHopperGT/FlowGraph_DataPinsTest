@@ -40,7 +40,7 @@ public:
 	// --
 
 public:
-	UFlowNode_DataPinsTester_Enum(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
+	UFlowNode_DataPinsTester_Enum();
 
 	// IFlowCoreExecutableInterface
 	virtual void ExecuteInput(const FName& PinName) override;

@@ -9,8 +9,7 @@
 
 FName UFlowNode_DataPinsTester_Manual::OUTPIN_StringOutput;
 
-UFlowNode_DataPinsTester_Manual::UFlowNode_DataPinsTester_Manual(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer)
+UFlowNode_DataPinsTester_Manual::UFlowNode_DataPinsTester_Manual()
 {
 #if WITH_EDITOR
 	Category = "Flow|Test";
