@@ -58,19 +58,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins)
 	FFlowDataPinValue_Class Class_Wrapped_Input;
 
-	// #FlowDataPinLegacy
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Object Object_LegacyWrapped_Output;
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Class Class_LegacyWrapped_Output;
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Object Object_LegacyWrapped_Input;
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Class Class_LegacyWrapped_Input;
-	// --
 
 public:
 	UFlowNode_DataPinsTester_Object();

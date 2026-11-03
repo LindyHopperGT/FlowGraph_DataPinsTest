@@ -40,19 +40,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins)
 	FFlowDataPinValue_GameplayTagContainer GameplayTagContainer_Wrapped_Input;
 
-	// #FlowDataPinLegacy
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_GameplayTag GameplayTag_LegacyWrapped_Output;
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_GameplayTagContainer GameplayTagContainer_LegacyWrapped_Output;
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_GameplayTag GameplayTag_LegacyWrapped_Input;
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_GameplayTagContainer GameplayTagContainer_LegacyWrapped_Input;
-	// --
 
 public:
 	UFlowNode_DataPinsTester_GameplayTag();

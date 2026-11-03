@@ -87,14 +87,6 @@ void UFlowNode_DataPinsTester_InstancedStruct::ExecuteInput(const FName& PinName
 		LogResults<FInstancedStruct>(INPIN_Name, ResultEnum, Values, InstancedStructFormatter);
 	}
 
-	// #FlowDataPinLegacy
-	{
-		FInstancedStruct Value;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, InstancedStruct_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_InstancedStruct>(INPIN_Name, Value);
-		LogResults<FInstancedStruct>(INPIN_Name, ResultEnum, { Value }, InstancedStructFormatter);
-	}
-	// --
 
 	constexpr bool bFinish = true;
 	TriggerFirstOutput(bFinish);

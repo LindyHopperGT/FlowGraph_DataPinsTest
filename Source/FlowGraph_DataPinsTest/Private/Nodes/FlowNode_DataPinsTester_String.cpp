@@ -94,28 +94,6 @@ void UFlowNode_DataPinsTester_String::ExecuteInput(const FName& PinName)
 		LogResults<FString>(INPIN_Name, ResultEnum, TArray<FString>{Value}, [](const FString& Val) { return Val; });
 	}
 
-	// #FlowDataPinLegacy
-	{
-		FName Value;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, Name_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_Name>(INPIN_Name, Value);
-		LogResults<FName>(INPIN_Name, ResultEnum, { Value }, [](const FName& Val) { return Val.ToString(); });
-	}
-
-	{
-		FString Value;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, String_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_String>(INPIN_Name, Value);
-		LogResults<FString>(INPIN_Name, ResultEnum, { Value }, [](const FString& Val) { return Val; });
-	}
-
-	{
-		FText Value;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, Text_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_Text>(INPIN_Name, Value);
-		LogResults<FText>(INPIN_Name, ResultEnum, { Value }, [](const FText& Val) { return Val.ToString(); });
-	}
-	// --
 
 	constexpr bool bFinish = true;
 	TriggerFirstOutput(bFinish);

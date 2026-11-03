@@ -44,13 +44,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins)
 	FFlowDataPinValue_InstancedStruct InstancedStruct_Wrapped_Input = FFlowDataPinValue_InstancedStruct({ FInstancedStruct(FFlowTestInstancedStruct::StaticStruct()), FInstancedStruct(FFlowTestInstancedStruct::StaticStruct()) });
 
-	// #FlowDataPinLegacy
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_InstancedStruct InstancedStruct_LegacyWrapped_Output = FFlowDataPinOutputProperty_InstancedStruct(FInstancedStruct(FFlowTestInstancedStruct::StaticStruct()));
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_InstancedStruct InstancedStruct_LegacyWrapped_Input = FFlowDataPinInputProperty_InstancedStruct(FInstancedStruct(FFlowTestInstancedStruct::StaticStruct()));
-	// --
 
 public:
 	UFlowNode_DataPinsTester_InstancedStruct();
