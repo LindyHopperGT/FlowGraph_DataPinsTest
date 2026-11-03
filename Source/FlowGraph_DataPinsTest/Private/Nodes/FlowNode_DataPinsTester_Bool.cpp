@@ -63,14 +63,6 @@ void UFlowNode_DataPinsTester_Bool::ExecuteInput(const FName& PinName)
 		LogResults<bool>(INPIN_Name, ResultEnum, Values, [](const bool& Val) { return Val ? TEXT("true") : TEXT("false"); });
 	}
 
-	// #FlowDataPinLegacy
-	{
-		bool Value = false;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, Bool_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_Bool>(INPIN_Name, Value);
-		LogResults<bool>(INPIN_Name, ResultEnum, { Value }, [](const bool& Val) { return Val ? TEXT("true") : TEXT("false"); });
-	}
-	// --
 
 	constexpr bool bFinish = true;
 	TriggerFirstOutput(bFinish);

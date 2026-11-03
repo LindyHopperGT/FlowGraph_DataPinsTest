@@ -58,25 +58,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins)
 	FFlowDataPinValue_String String_Wrapped_Input = FFlowDataPinValue_String(FString(TEXT("-Barney")));
 
-	// #FlowDataPinLegacy
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Name Name_LegacyWrapped_Output = FFlowDataPinOutputProperty_Name(FName("Zach"));
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_String String_LegacyWrapped_Output = FFlowDataPinOutputProperty_String(FString(TEXT("Abe")));
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Text Text_LegacyWrapped_Output = FFlowDataPinOutputProperty_Text(FText::FromString("Barney"));
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Name Name_LegacyWrapped_Input = FFlowDataPinInputProperty_Name(FName("-Zack"));
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_String String_LegacyWrapped_Input = FFlowDataPinInputProperty_String(FString(TEXT("-Abe")));
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Text Text_LegacyWrapped_Input = FFlowDataPinInputProperty_Text(FText::FromString("-Barney"));
-	// --
 
 public:
 	UFlowNode_DataPinsTester_String();

@@ -82,21 +82,6 @@ void UFlowNode_DataPinsTester_GameplayTag::ExecuteInput(const FName& PinName)
 		LogResults<FGameplayTag>(INPIN_Name, ResultEnum, Values, [](const FGameplayTag& Val) { return Val.ToString(); });
 	}
 
-	// #FlowDataPinLegacy
-	{
-		FGameplayTag Value;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, GameplayTag_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_GameplayTag>(INPIN_Name, Value);
-		LogResults<FGameplayTag>(INPIN_Name, ResultEnum, { Value }, [](const FGameplayTag& Val) { return Val.ToString(); });
-	}
-
-	{
-		FGameplayTagContainer Value;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, GameplayTagContainer_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_GameplayTagContainer>(INPIN_Name, Value);
-		LogResults<FGameplayTagContainer>(INPIN_Name, ResultEnum, { Value }, [](const FGameplayTagContainer& Val) { return Val.ToStringSimple(); });
-	}
-	// --
 
 	constexpr bool bFinish = true;
 	TriggerFirstOutput(bFinish);

@@ -40,19 +40,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins)
 	FFlowDataPinValue_Int64 Int64_Wrapped_Input = FFlowDataPinValue_Int64({ -22, -23 });
 
-	// #FlowDataPinLegacy
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Int32 Int_LegacyWrapped_Output = FFlowDataPinOutputProperty_Int32(-24);
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Int64 Int64_LegacyWrapped_Output = FFlowDataPinOutputProperty_Int64(25);
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Int32 Int32_LegacyWrapped_Input = FFlowDataPinInputProperty_Int32(-26);
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Int64 Int64_LegacyWrapped_Input = FFlowDataPinInputProperty_Int64(-27);
-	// --
 
 public:
 	UFlowNode_DataPinsTester_Int();

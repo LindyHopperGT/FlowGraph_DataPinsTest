@@ -61,25 +61,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins)
 	FFlowDataPinValue_Transform Transform_Wrapped_Input = FFlowDataPinValue_Transform(FTransform(FRotator(-22), FVector(-22)));
 
-	// #FlowDataPinLegacy
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Vector Vector_LegacyWrapped_Output = FFlowDataPinOutputProperty_Vector(FVector(10));
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Rotator Rotator_LegacyWrapped_Output = FFlowDataPinOutputProperty_Rotator(FRotator(11));
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Transform Transform_LegacyWrapped_Output = FFlowDataPinOutputProperty_Transform(FTransform(FRotator(22), FVector(22)));
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Vector Vector_LegacyWrapped_Input = FFlowDataPinInputProperty_Vector(FVector(-10));
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Rotator Rotator_LegacyWrapped_Input = FFlowDataPinInputProperty_Rotator(FRotator(-11));
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Transform Transform_LegacyWrapped_Input = FFlowDataPinInputProperty_Transform(FTransform(FRotator(-22), FVector(-22)));
-	// --
 
 public:
 	UFlowNode_DataPinsTester_Struct();

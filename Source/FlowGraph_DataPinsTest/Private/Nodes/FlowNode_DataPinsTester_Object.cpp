@@ -90,21 +90,6 @@ void UFlowNode_DataPinsTester_Object::ExecuteInput(const FName& PinName)
 		LogResults<TObjectPtr<UClass>>(INPIN_Name, ResultEnum, Values, [](const TObjectPtr<UClass> Val) { return Val ? Val->GetName() : TEXT("None"); });
 	}
 
-	// #FlowDataPinLegacy
-	{
-		TObjectPtr<UObject> Value = nullptr;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, Object_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_Object>(INPIN_Name, Value);
-		LogResults<TObjectPtr<UObject>>(INPIN_Name, ResultEnum, { Value }, [](const TObjectPtr<UObject> Val) { return Val ? Val->GetName() : TEXT("None"); });
-	}
-
-	{
-		TObjectPtr<UClass> Value = nullptr;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, Class_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_Class>(INPIN_Name, Value);
-		LogResults<TObjectPtr<UClass>>(INPIN_Name, ResultEnum, { Value }, [](const TObjectPtr<UClass> Val) { return Val ? Val->GetName() : TEXT("None"); });
-	}
-	// --
 
 	constexpr bool bFinish = true;
 	TriggerFirstOutput(bFinish);

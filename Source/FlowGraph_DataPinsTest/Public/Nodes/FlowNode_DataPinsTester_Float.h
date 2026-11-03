@@ -46,19 +46,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins)
 	FFlowDataPinValue_Double Double_Wrapped_Input = FFlowDataPinValue_Double(-12.123);
 
-	// #FlowDataPinLegacy
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Float Float_LegacyWrapped_Output = FFlowDataPinOutputProperty_Float(21.123f);
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Double Double_LegacyWrapped_Output = FFlowDataPinOutputProperty_Double(22.123);
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Float Float_LegacyWrapped_Input = FFlowDataPinInputProperty_Float(-21.123f);
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Double Double_LegacyWrapped_Input = FFlowDataPinInputProperty_Double(22.123);
-	// --
 
 public:
 	UFlowNode_DataPinsTester_Float();
