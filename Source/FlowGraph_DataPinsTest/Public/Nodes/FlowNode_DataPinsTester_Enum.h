@@ -31,13 +31,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins)
 	FFlowDataPinValue_Enum Enum_Wrapped_Input = FFlowDataPinValue_Enum(StaticEnum<EFlowNodeState>(), { "Invalid", "Invalid" });
 
-	// #FlowDataPinLegacy
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Enum Enum_LegacyWrapped_Output = FFlowDataPinOutputProperty_Enum("Active", StaticEnum<EFlowNodeState>());
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Enum Enum_LegacyWrapped_Input = FFlowDataPinInputProperty_Enum("Invalid", StaticEnum<EFlowNodeState>());
-	// --
 
 public:
 	UFlowNode_DataPinsTester_Enum();
@@ -46,5 +39,5 @@ public:
 	virtual void ExecuteInput(const FName& PinName) override;
 
 	// IFlowDataPinValueSupplierInterface
-	virtual FFlowDataPinResult TrySupplyDataPin(FName PinName) const override;
+	virtual FFlowDataPinResult TrySupplyDataPin(const FName PinName) const override;
 };

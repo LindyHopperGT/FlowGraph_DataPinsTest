@@ -47,7 +47,7 @@ void UFlowNode_DataPinsTester_Manual::ExecuteInput(const FName& PinName)
 }
 
 
-FFlowDataPinResult UFlowNode_DataPinsTester_Manual::TrySupplyDataPin(FName PinName) const
+FFlowDataPinResult UFlowNode_DataPinsTester_Manual::TrySupplyDataPin(const FName PinName) const
 {
 	FFlowDataPinResult Result;
 

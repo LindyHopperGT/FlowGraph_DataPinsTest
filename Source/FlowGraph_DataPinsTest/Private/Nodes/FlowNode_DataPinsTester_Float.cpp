@@ -85,27 +85,12 @@ void UFlowNode_DataPinsTester_Float::ExecuteInput(const FName& PinName)
 		LogResults<double>(INPIN_Name, ResultEnum, TArray<double>{Value}, [](const double& Val) { return FString::SanitizeFloat(Val); });
 	}
 
-	// #FlowDataPinLegacy
-	{
-		float Value;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, Float_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_Float>(INPIN_Name, Value);
-		LogResults<float>(INPIN_Name, ResultEnum, { Value }, [](const float& Val) { return FString::SanitizeFloat(Val); });
-	}
-
-	{
-		double Value;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, Double_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_Double>(INPIN_Name, Value);
-		LogResults<double>(INPIN_Name, ResultEnum, { Value }, [](const double& Val) { return FString::SanitizeFloat(Val); });
-	}
-	// --
 
 	constexpr bool bFinish = true;
 	TriggerFirstOutput(bFinish);
 }
 
-FFlowDataPinResult UFlowNode_DataPinsTester_Float::TrySupplyDataPin(FName PinName) const
+FFlowDataPinResult UFlowNode_DataPinsTester_Float::TrySupplyDataPin(const FName PinName) const
 {
 	FFlowDataPinResult DataPinResult = Super::TrySupplyDataPin(PinName);
 	return DataPinResult;

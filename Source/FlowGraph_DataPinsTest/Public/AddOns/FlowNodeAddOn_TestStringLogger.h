@@ -20,9 +20,9 @@ public:
 	virtual EFlowAddOnAcceptResult AcceptFlowNodeAddOnParent_Implementation(const UFlowNodeBase* ParentTemplate, const TArray<UFlowNodeAddOn*>& AdditionalAddOnsToAssumeAreChildren) const override;
 	// End UFlowNodeAddOn
 
-	// Begin UMKTFlowNode Interface
+	// Begin IFlowCoreExecutableInterface
 	virtual void ExecuteInput(const FName& PinName) override;
-	// End UMKTFlowNode Interface
+	// End IFlowCoreExecutableInterface
 
 	// Begin UFlowNode
 	virtual void UpdateNodeConfigText_Implementation() override;

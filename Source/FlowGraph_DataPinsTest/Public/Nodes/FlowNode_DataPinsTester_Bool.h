@@ -40,13 +40,6 @@ public:
 	UPROPERTY(EditAnywhere, Category = DataPins)
 	FFlowDataPinValue_Bool Bool_Wrapped_Input = FFlowDataPinValue_Bool(false);
 
-	// #FlowDataPinLegacy
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinOutputProperty_Bool Bool_LegacyWrapped_Output = FFlowDataPinOutputProperty_Bool(true);
-
-	UPROPERTY(EditAnywhere, Category = DataPins)
-	FFlowDataPinInputProperty_Bool Bool_LegacyWrapped_Input = FFlowDataPinInputProperty_Bool(false);
-	// --
 
 public:
 	UFlowNode_DataPinsTester_Bool();
@@ -56,6 +49,6 @@ public:
 	// --
 
 	// IFlowDataPinValueSupplierInterface
-	virtual FFlowDataPinResult TrySupplyDataPin(FName PinName) const override;
+	virtual FFlowDataPinResult TrySupplyDataPin(const FName PinName) const override;
 	// --
 };

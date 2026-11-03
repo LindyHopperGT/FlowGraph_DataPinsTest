@@ -59,7 +59,7 @@ void UFlowNode_DataPinsTester_Enum::ExecuteInput(const FName& PinName)
 	TriggerFirstOutput(bFinish);
 }
 
-FFlowDataPinResult UFlowNode_DataPinsTester_Enum::TrySupplyDataPin(FName PinName) const
+FFlowDataPinResult UFlowNode_DataPinsTester_Enum::TrySupplyDataPin(const FName PinName) const
 {
 	FFlowDataPinResult DataPinResult = Super::TrySupplyDataPin(PinName);
 	return DataPinResult;

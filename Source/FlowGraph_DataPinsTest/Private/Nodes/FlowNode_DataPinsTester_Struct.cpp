@@ -91,34 +91,12 @@ void UFlowNode_DataPinsTester_Struct::ExecuteInput(const FName& PinName)
 		LogResults<FTransform>(INPIN_Name, ResultEnum, Values, [](const FTransform& Val) { return Val.ToString(); });
 	}
 
-	// #FlowDataPinLegacy
-	{
-		FVector Value;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, Vector_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_Vector>(INPIN_Name, Value);
-		LogResults<FVector>(INPIN_Name, ResultEnum, { Value }, [](const FVector& Val) { return Val.ToString(); });
-	}
-
-	{
-		FRotator Value;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, Rotator_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_Rotator>(INPIN_Name, Value);
-		LogResults<FRotator>(INPIN_Name, ResultEnum, { Value }, [](const FRotator& Val) { return Val.ToString(); });
-	}
-
-	{
-		FTransform Value;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, Transform_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_Transform>(INPIN_Name, Value);
-		LogResults<FTransform>(INPIN_Name, ResultEnum, { Value }, [](const FTransform& Val) { return Val.ToString(); });
-	}
-	// --
 
 	constexpr bool bFinish = true;
 	TriggerFirstOutput(bFinish);
 }
 
-FFlowDataPinResult UFlowNode_DataPinsTester_Struct::TrySupplyDataPin(FName PinName) const
+FFlowDataPinResult UFlowNode_DataPinsTester_Struct::TrySupplyDataPin(const FName PinName) const
 {
 	FFlowDataPinResult DataPinResult = Super::TrySupplyDataPin(PinName);
 	return DataPinResult;

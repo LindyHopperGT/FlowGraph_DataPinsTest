@@ -69,27 +69,12 @@ void UFlowNode_DataPinsTester_Int::ExecuteInput(const FName& PinName)
 		LogResults<int64>(INPIN_Name, ResultEnum, Values, [](const int64& Val) { return FString::Printf(TEXT("%lld"), Val); });
 	}
 
-	// #FlowDataPinLegacy
-	{
-		int32 Value;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, Int32_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_Int>(INPIN_Name, Value);
-		LogResults<int32>(INPIN_Name, ResultEnum, { Value }, [](const int32& Val) { return FString::FromInt(Val); });
-	}
-
-	{
-		int64 Value;
-		INPIN_Name = GET_MEMBER_NAME_CHECKED(ThisClass, Int64_LegacyWrapped_Input);
-		ResultEnum = TryResolveDataPinValue<FFlowPinType_Int64>(INPIN_Name, Value);
-		LogResults<int64>(INPIN_Name, ResultEnum, { Value }, [](const int64& Val) { return FString::Printf(TEXT("%lld"), Val); });
-	}
-	// --
 
 	constexpr bool bFinish = true;
 	TriggerFirstOutput(bFinish);
 }
 
-FFlowDataPinResult UFlowNode_DataPinsTester_Int::TrySupplyDataPin(FName PinName) const
+FFlowDataPinResult UFlowNode_DataPinsTester_Int::TrySupplyDataPin(const FName PinName) const
 {
 	FFlowDataPinResult DataPinResult = Super::TrySupplyDataPin(PinName);
 	return DataPinResult;
